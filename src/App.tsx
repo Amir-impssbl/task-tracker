@@ -1,12 +1,17 @@
-import { AuthForm } from '@/components/auth/AuthForm';
-import { Toaster } from '@/components/ui/toaster';
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import { AuthForm } from './components/AuthForm';
+import { Dashboard } from './pages/Dashboard';
 
 function App() {
   return (
-    <>
-      <AuthForm />
-      <Toaster />
-    </>
+    <Router>
+      <Routes>
+        <Route path="/" element={<AuthForm />} />
+        <Route path="/dashboard" element={<Dashboard />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 }
 
